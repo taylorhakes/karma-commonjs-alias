@@ -1,4 +1,4 @@
-# karma-commonjs-aliasing (karma-commonjs with module aliasing)
+# karma-commonjs-alias (karma-commonjs with module aliasing)
 
 ## This is a clone of karma-commonjs
 Here is a link to the original repo [karam-commonjs](https://github.com/karma-runner/karma-commonjs) . Go there for a full list of features.
