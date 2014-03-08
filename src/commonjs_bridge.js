@@ -10,7 +10,9 @@ function require(requiringFile, dependency) {
     if (window.__cjs_module__ === undefined) throw new Error("Could not find any modules. Did you remember to set 'preprocessors' in your Karma config?");
     if (window.__cjs_modules_root__ === undefined) throw new Error("Could not find CommonJS module root path. Please report this issue to the karma-commonjs project.");
 
-    dependency = normalizePath(requiringFile, dependency, window.__cjs_modules_root__ || '');
+    if (!window.__cjs_module__[dependency]) {
+        dependency = normalizePath(requiringFile, dependency);
+    }
 
     // find module
     var moduleFn = window.__cjs_module__[dependency];
