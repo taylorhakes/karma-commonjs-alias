@@ -26,3 +26,8 @@ In another file, you can specify the following and it will be resolve to `./conf
 ```
 require('config');
 ```
+
+**Node/NPM Installation
+```
+npm install karma-commonjs-alias
+```
