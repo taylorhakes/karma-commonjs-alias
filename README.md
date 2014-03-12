@@ -35,7 +35,7 @@ module.exports = function (config) {
 	config.set({
 	   ...
 	   files: [
-	      **/*.js
+	      '**/*.js'
 	      'promise-polyfill', // NPM module used in JS files
 	      'observable-lite' // Another NPM module
 	   ]
