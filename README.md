@@ -1,6 +1,6 @@
 # karma-commonjs-alias (karma-commonjs with module aliasing)
 
-## This is a clone of karma-commonjs
+## This is a clone of karma-commonjs with additional features
 Here is a link to the original repo [karma-commonjs](https://github.com/karma-runner/karma-commonjs) . Go there for a full list of features.
 
 ## Module aliasing
@@ -25,6 +25,23 @@ module.exports = function (config) {
 In another file, you can specify the following and it will be resolve to `./config/dev.js`
 ```
 require('config');
+```
+
+## NPM Module Support
+Just add NPM modules to the files array and they will be available in the tests
+
+```
+module.exports = function (config) {
+	config.set({
+	   ...
+	   files: [
+	      **/*.js
+	      'promise-polyfill', // NPM module used in JS files
+	      'observable-lite' // Another NPM module
+	   ]
+	   ...
+  });
+}
 ```
 
 ## Node/NPM Installation
