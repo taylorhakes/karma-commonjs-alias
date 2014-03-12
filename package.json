@@ -1,6 +1,6 @@
 {
   "name": "karma-commonjs-alias",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A Karma plugin. Test CommonJS modules with added alias support",
   "main": "lib/plugin.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/karma-runner/karma-commonjs.git"
+    "url": "git://github.com/taylorhakes/karma-commonjs-alias.git"
   },
   "keywords": [
     "karma-plugin",
