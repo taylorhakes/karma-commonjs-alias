@@ -3,11 +3,11 @@
     "use strict";
 
 	var cachedModules = {};
-  var handlbarsExt = {
-      hbs: true,
-      handlebars: true,
-      handlebar: true
-  };
+    var handlbarsExt = {
+        hbs: true,
+        handlebars: true,
+        handlebar: true
+    };
 
 // load all modules
 for (var modulePath in window.__cjs_module__) {
@@ -72,7 +72,7 @@ function normalizePath(basePath, relativePath) {
     }
 
     var normalizedPath = baseComponents.join("/");
-    if (normalizedPath.substr(normalizedPath.length - 3) !== ".js" && !handlbarsExt[normalizedPath.split('.').pop()]) {
+    if (!~normalizedPath.indexOf('.')) {
         normalizedPath += ".js";
     }
 
