@@ -1,4 +1,13 @@
-var cachedModules = {};
+// Copyright (c) 2013 Titanium I.T. LLC. Licensed under the MIT license.
+(function() {
+    "use strict";
+
+	var cachedModules = {};
+  var handlbarsExt = {
+      hbs: true,
+      handlebars: true,
+      handlebar: true
+  };
 
 // load all modules
 for (var modulePath in window.__cjs_module__) {
@@ -40,6 +49,7 @@ function requireFn(basepath) {
 
 function normalizePath(basePath, relativePath) {
     if (isFullPath(relativePath)) return relativePath;
+    if(!isFullPath(basePath)) basePath = window.__cjs_path__ && window.__cjs_path__[basePath];
     if (!isFullPath(basePath)) throw new Error("basePath should be full path, but was [" + basePath + "]");
 
     var baseComponents = basePath.split("/");
@@ -62,8 +72,7 @@ function normalizePath(basePath, relativePath) {
     }
 
     var normalizedPath = baseComponents.join("/");
-
-    if (normalizedPath.substr(normalizedPath.length - 3) !== ".js") {
+    if (normalizedPath.substr(normalizedPath.length - 3) !== ".js" && !handlbarsExt[normalizedPath.split('.').pop()]) {
         normalizedPath += ".js";
     }
 
@@ -76,3 +85,4 @@ function normalizePath(basePath, relativePath) {
         return unixFullPath || windowsFullPath;
     }
 }
+})(window);
