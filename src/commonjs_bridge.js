@@ -1,13 +1,7 @@
-// Copyright (c) 2013 Titanium I.T. LLC. Licensed under the MIT license.
 (function() {
     "use strict";
 
 	var cachedModules = {};
-    var handlbarsExt = {
-        hbs: true,
-        handlebars: true,
-        handlebar: true
-    };
 
 // load all modules
 for (var modulePath in window.__cjs_module__) {
@@ -71,8 +65,10 @@ function normalizePath(basePath, relativePath) {
         }
     }
 
-    var normalizedPath = baseComponents.join("/");
-    if (!~normalizedPath.indexOf('.')) {
+    var normalizedPath = baseComponents.join("/"),
+        ext = normalizedPath.split('.').pop();
+    
+    if (!window.__cjs_ext__ || !window.__cjs_ext__[ext]) {
         normalizedPath += ".js";
     }
 

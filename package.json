@@ -1,6 +1,6 @@
 {
   "name": "karma-commonjs-alias",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "A Karma plugin. Test CommonJS modules with added alias support",
   "main": "lib/plugin.js",
   "scripts": {
