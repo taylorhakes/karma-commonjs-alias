@@ -1,3 +1,4 @@
+// Copyright (c) 2013 Titanium I.T. LLC. Licensed under the MIT license.
 (function() {
     "use strict";
 
@@ -20,16 +21,23 @@ function require(requiringFile, dependency) {
 
     // find module
     var moduleFn = window.__cjs_module__[dependency];
+  	if(moduleFn === undefined && window.__cjs_path__[dependency]) {
+  		moduleFn = window.__cjs_module__[window.__cjs_path__[dependency]];
+  	}
     if (moduleFn === undefined) {
         throw new Error("Could not find module '" + dependency + "' from '" +
             requiringFile + "'");
     }
 
     // run the module (if necessary)
-    var module = cachedModules[dependency];
+    var module = cachedModules[dependency] || cachedModules[window.__cjs_path__[dependency]];
     if (module === undefined) {
         module = { exports: {} };
-        cachedModules[dependency] = module;
+    		if(window.__cjs_path__[dependency]) {
+    			cachedModules[window.__cjs_path__[dependency]] = module;
+    		} else {
+    			cachedModules[dependency] = module;
+    		}
         moduleFn(requireFn(dependency), module, module.exports);
     }
     return module.exports;
@@ -67,7 +75,7 @@ function normalizePath(basePath, relativePath) {
 
     var normalizedPath = baseComponents.join("/"),
         ext = normalizedPath.split('.').pop();
-    
+
     if (!window.__cjs_ext__ || !window.__cjs_ext__[ext]) {
         normalizedPath += ".js";
     }
