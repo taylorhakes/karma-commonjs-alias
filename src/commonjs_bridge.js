@@ -1,8 +1,4 @@
-// Copyright (c) 2013 Titanium I.T. LLC. Licensed under the MIT license.
-(function() {
-    "use strict";
-
-	var cachedModules = {};
+var cachedModules = {};
 
 // load all modules
 for (var modulePath in window.__cjs_module__) {
@@ -89,4 +85,3 @@ function normalizePath(basePath, relativePath) {
         return unixFullPath || windowsFullPath;
     }
 }
-})(window);
